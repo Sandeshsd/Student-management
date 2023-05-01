@@ -8,5 +8,9 @@
 </head>
 <body>
       <a href="saveStudent"> Add student</a>
+      <br><br>
+      <a href="viewStudent">view student</a>
+      <br><br>
+      
 </body>
 </html>

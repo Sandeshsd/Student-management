@@ -1,9 +1,12 @@
 package com.mvc_demo.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 import org.springframework.stereotype.Component;
 
@@ -20,5 +23,20 @@ public class StudentDAO {
 		et.begin();
 		em.persist(student);
 		et.commit();
+	}
+	public Student getStudentById(int studentId) {
+		return em.find(Student.class, studentId);
+	}
+	public void updateStudent(Student student) {
+		et.begin();
+		em.merge(student);
+		et.commit();
+	}
+	public List<Student> getAllStudents() {
+		Query query=em.createQuery("select s from Student s ");
+		List<Student> students=query.getResultList();
+		return students;
+		
+		
 	}
 }

@@ -1,5 +1,7 @@
 package com.mvc_demo.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -31,5 +33,13 @@ public class StudentController {
 	  ModelAndView view=new ModelAndView();
 	  view.setViewName("index.jsp");
 	  return view;
+	}
+	
+	@RequestMapping("/viewStudent")
+	public ModelAndView viewStudents() {
+	List<Student> students=	dao.getAllStudents();
+	ModelAndView view=new ModelAndView("viewStudents.jsp");
+	view.addObject("students",students);
+	return view;
 	}
 }
