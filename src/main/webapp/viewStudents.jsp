@@ -22,8 +22,8 @@
       <td>${student.getStudentId()}</td>
       <td>${student.getStudentName()}</td>
       <td>${student.getStudentPhoneNumber()}</td>
-      <td></td>
-      <td></td>
+      <td><a href="updateStudent?id=${student.getStudentId()} ">update</a></td>
+      <td><%-- <a href="deleteStudent?id=${student.getStudentId()} ">update</a> --%></td>
       </tr>
      </c:forEach>
       

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.mvc_demo.dao.StudentDAO;
@@ -41,5 +42,19 @@ public class StudentController {
 	ModelAndView view=new ModelAndView("viewStudents.jsp");
 	view.addObject("students",students);
 	return view;
+	}
+	@RequestMapping("/updateStudent")
+	public ModelAndView updateStudents(@RequestParam int id) {
+		ModelAndView view=new ModelAndView("updateStudent.jsp");
+		Student student=dao.getStudentById(id);
+		view.addObject("student",student);
+		return view;
+	}
+	@RequestMapping("/saveUpdateStudent")
+	public ModelAndView saveUpdatedStudent(@ModelAttribute Student student) {
+		ModelAndView modelAndView=new ModelAndView("viewStudents.jsp");
+		 dao.updateStudent(student);
+	    modelAndView.addObject(("students"), dao.getAllStudents());
+	    return modelAndView;
 	}
 }
